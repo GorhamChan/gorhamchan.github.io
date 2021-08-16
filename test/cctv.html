@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>央视直播</title>
+    <link href="https://r.img.cctvpic.com/newcctv/tv/live/cctv5/m/style/style.css?1bf7df35fd1e0e9981add0bf75b5b71f" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1534139116784561/CCTVLOGO_180913.jpg"
+          rel="apple-touch-icon-precomposed"/>
+    <script src="https://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1424933607444705/zepto.min.js"></script>
+    <script src="https://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1486437585241505/configtool.js"></script>
+    <script src="https://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1504516146368634/echo.min.js"></script>
+    <script src="https://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1548732472557170/swiper4.min.js"
+            type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://time.tv.cctv.com/time.php"></script>
+</head>
+<body data-spm="PdQJ5nEw3sE7">
+<script src="https://js.player.cntv.cn/creator/swfobject.js" type="text/javascript"></script>
+<script src="https://gorhamchan.gitee.io/js/liveplayer.js" type="text/javascript"></script>
+<div class="ELMTXwEISldBrQvrUv2GzZxS190923" data-spm="EXwEISldBrQv">
+    <div class="ind_video_xq18570 ind_video_xq18570new">
+        <div class="video_box" id="player">
+        </div>
+        <link href="https://r.img.cctvpic.com/newcctv/tv/bhy/mobile/zbyysyytg/style/style.css?0d660dc8639e747eb07681a9c50a508e"
+              rel="stylesheet"
+              type="text/css"/>
+    </div>
+    <div class="list">
+        <select class="channelList" id="channelList" name="channelList" onchange="changeChannel()">
+            <option selected="selected" value="cctv1">切换频道</option>
+            <option value="cctv1">CCTV1</option>
+            <option value="cctv2">CCTV2</option>
+            <option value="cctv3">CCTV3</option>
+            <option value="cctv4">CCTV4</option>
+            <option value="cctv5">CCTV5</option>
+            <option value="cctv5plus">CCTV5+</option>
+            <option value="cctv6">CCTV6</option>
+            <option value="cctv7">CCTV7</option>
+            <option value="cctv8">CCTV8</option>
+            <option value="cctvjilu">CCTV9</option>
+            <option value="cctv10">CCTV10</option>
+            <option value="cctv11">CCTV11</option>
+            <option value="cctv12">CCTV12</option>
+            <option value="cctv13">CCTV13</option>
+            <option value="cctvchild">CCTV14</option>
+            <option value="cctv15">CCTV15</option>
+            <option value="cctv17">CCTV17</option>
+        </select>
+    </div>
+    <script>
+        $("#channelList").get(0).selectedIndex = 0;
+        var TVchannel = "cctv1";
+        var html5PlayBtnBottomleft = true; //控制视屏标在左下
+        var _videoW = (document.documentElement.clientWidth || window.innerWidth) > 750 ? 750 : (document.documentElement.clientWidth ||
+            window.innerWidth);
+        var _videoH = _videoW / 16 * 9;
+        var isHttps = "true";
+        var playerParas = {
+            divId: "player",   /*播放器容器id，必填项*/
+            w: _videoW,   /*播放器宽度，必填项*/
+            h: _videoH,   /*播放器高度，必填项*/
+            t: TVchannel,   /*台名称，比如cctv1,cctv13等，必填项*/
+            isAutoPlay: "true",   /*是否自动播放，只有false为不自动播放，其它值为自动播放*/
+            ruleVisible: "true",   /*是否显示时移尺子，默认true表示显示*/
+            br: "",  /*设置默认码率*/
+            posterImg: "",   /*播放器前贴图片*/
+            isLive4k: "false",  /*是否为4k播放器，true是4k,false不是*/
+            isHttps: isHttps,  /*是否https视频，true是,false不是*/
+            wmode: "opaque",   /*flash播放器的窗口模式，默认为opaque*/
+            hasBarrage: "false",  /*是否有弹幕功能，默认false，false时不显示弹幕、不显示弹幕设置按钮、不显示弹幕开关、不访问弹幕接口和表情包配置接口e*/
+            playerType: "hw",   /*播放器类型，small表示小窗播放器*/
+            webFullScreenOn: "true",   /*是否显示网页全屏按钮，默认true表示显示*/
+            isLeftBottom: "true",  /*播放按钮是否在播放器左下角,为true表示是，false表示播放按钮在播放器中间*/
+            others: ""   /*其它待定参数*/
+        };
+
+        function playzhibo() {
+            $('#player').attr('data-play', 'zhibo');
+            createLivePlayer(playerParas);
+        }
+
+        function zhiboChange() {
+
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf('android') > -1) {
+                var obj = document.getElementById("player_pagefullscreen_player");
+                var isPageFullscreen = obj.getAttribute("isPageFullscreen");
+            } else {
+                var isPageFullscreen = "false"
+            }
+
+            if (isWasmSupported() && (isLiveHlsJsSupported() && !/(iphone|ipad)/i.test(navigator.userAgent))) {
+
+            } else {
+                //console.log(obj,isPageFullscreen)
+                //if(isPageFullscreen=="true"){   //判断全屏
+
+                //}else{
+                var _W = (document.documentElement.clientWidth || window.innerWidth) > 750 ? 750 : (document.documentElement.clientWidth ||
+                    window.innerWidth);
+                var _H = _W / 16 * 9;
+                _videoW = _W;
+                _videoH = _H;
+                $("#player").css({
+                    "width": _W + "px",
+                    "height": _H + "px"
+                });
+                $("#html5Player_live").css("width", _W + "px");
+                $("#html5Player_live").css("height", _H + "px");
+                $("#html5VideoBack").css("width", _W).css("height", _H);
+                $("#html5Player").css("width", _W).css("height", _H);
+                $("#html5ControlDiv").css("width", _W).css("height", _H);
+                $('#playbtn_img').css({
+                    "left": (_W - 70) / 2 + "px",
+                    "top": (_H - 70) / 2 + "px"
+                });
+                var objwenzi = $($("#flash_video").children("div").get(0));
+                var wenziheight = objwenzi.height(); //对不起，认证没有通过，暂时无法播放此视频。 文字高度
+                objwenzi.css({
+                    'width': _W + 'px',
+                    'top': (_H - wenziheight) / 2 + 'px'
+                });
+                if (document.getElementById("playbtn_img")) {
+                    document.getElementById("playbtn_img").style.backgroundSize = "70px 70px";
+                }
+                $('#hds_video_content_is_loading').css({
+                    "left": (_W - 120) / 2 + "px",
+                    "top": (_H - 42) / 2 + "px"
+                });
+            }
+        }
+
+        playzhibo();
+
+        function changeChannel() {
+            playerParas.t = document.getElementById("channelList").value;
+            playzhibo();
+        }
+
+        $(window).resize(function () {
+            setTimeout(function () {
+                var _videoW2 = (document.documentElement.clientWidth || window.innerWidth) > 750 ? 750 : (document.documentElement.clientWidth || window.innerWidth);
+                if (_videoW2 == _videoW) {
+
+                } else {
+                    zhiboChange();
+                    /*if(verificationfu(LivePageFullscreenBtn.prototype.pageFullscreenClick())){
+                        console.log("pl")
+                        LivePageFullscreenBtn.prototype.pageFullscreenClick("player")
+                    }*/
+                }
+            }, 300)
+        })
+
+        function creatIpadFlashPlayer_190911(divid, videowidth, videoheight, channel, start, end, videofromurl, type, adlocal, adcorner, adafter, adpause, wrating, backTitle){
+            var playerParas = {
+                divId: divid,   /*播放器容器id，必填项*/
+                w: videowidth,   /*播放器宽度，必填项*/
+                h: videoheight,   /*播放器高度，必填项*/
+                t: channel,   /*台名称，比如cctv1,cctv13等，必填项*/
+                isAutoPlay: "true",   /*是否自动播放，只有false为不自动播放，其它值为自动播放*/
+                start: start,   /*回看的开始时间*/
+                end: end,  /*回看的结束时间*/
+                title: backTitle,  /*回看的结束时间*/
+                posterImg: "",   /*播放器前贴图片*/
+                isHttps: isHttps,  /*是否https视频，true是,false不是*/
+                playerType: "liveback",   /*播放器类型，small表示小窗播放器*/
+                webFullScreenOn: "true",   /*是否显示网页全屏按钮，默认true表示显示*/
+                isLeftBottom: "true",  /*播放按钮是否在播放器左下角,为true表示是，false表示播放按钮在播放器中间*/
+                others: ""   /*其它待定参数*/
+
+            };
+
+            createLivebackPlayer(playerParas);
+        }
+
+        var j_now = now;
+        var nowTimestamp = j_now.getTime(); //时间戳毫秒
+
+    </script>
+</div>
+
+</body>
+</html>
