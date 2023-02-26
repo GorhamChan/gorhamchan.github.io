@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         学习助手
 // @namespace    http://tampermonkey.net/
-// @version      202301013
+// @version      20230208
 // @description  问题反馈位置： https://github.com/TechXueXi/techxuexi-js/issues 。读,看，做。
 // @author       techxuexi。
 // @icon         https://pc.xuexi.cn/favicon.ico
@@ -813,7 +813,11 @@ async function doingExam() {
                 }
                 if (!hasButton) {
                     //没找到按钮，随便选一个
-                    allbuttons[0].click();
+                    try {
+                        allbuttons[0].click();
+                    } catch(e) {
+                        console.log(e);
+                    }
                 }
                 break;
             }
@@ -837,11 +841,19 @@ async function doingExam() {
                     }
                     if (!hasButton) {
                         //没找到按钮，随便选一个
+                     try {
                         allbuttons[0].click();
+                     } catch(e) {
+                        console.log(e);
+                     }
                     }
                 } else {
                     //没答案，随便选一个
-                    allbuttons[0].click();
+                    try {
+                        allbuttons[0].click();
+                    } catch(e) {
+                        console.log(e);
+                    }
                 }
                 break;
             }
@@ -1170,22 +1182,23 @@ function  dragandDrop(btn_hk, clientX, clientY, distance) {
     var elem = btn_hk,
         k = 0,
         interval;
-    iME(elem,"mousedown",0, 0, clientX, clientY);
-    let waitTime = Math.floor(Math.random() * (0.5 * 1000 - 0.1 * 1000) + 0.1 * 1000)
+    iME(elem,"mousedown", clientX, clientY);
+    let waitTime = Math.floor(Math.random() * (0.005 * 1000 - 0.09 * 1000) + 0.09 * 1000);
     interval = setInterval(function() {
         k++;
-        iter(k);
+        iME(elem, "mousemove", clientX + k, clientY);
         if (k === distance) {
             clearInterval(interval);
-            iME(elem,"mouseup",clientX + k, clientY, 220 + k, 400);
+            iME(elem, "mouseup", clientX + k, clientY);
         }
     }, waitTime);
-    function iter(y) {
-        iME(elem,"mousemove",clientX + y, clientY, clientX + y, clientY);
-    }
-    function iME(obj,event,screenXArg,screenYArg,clientXArg,clientYArg){
-        var mousemove = document.createEvent("MouseEvent");
-        mousemove.initMouseEvent(event, true, true, unsafeWindow, 0, screenXArg, screenYArg, clientXArg, clientYArg, 0, 0, 0, 0, 0, null);
-        obj.dispatchEvent(mousemove);
+    function iME(obj, event, clientXArg, clientYArg) {
+        var mouseEvent = new MouseEvent(event, {
+            bubbles: true,
+            cancelable: true,
+            clientX: clientXArg,
+            clientY: clientYArg
+        });
+        obj.dispatchEvent(mouseEvent);
     }
 }
