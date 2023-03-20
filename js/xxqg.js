@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         学习助手
 // @namespace    http://tampermonkey.net/
-// @version      20230208
+// @version      202303200
 // @description  问题反馈位置： https://github.com/TechXueXi/techxuexi-js/issues 。读,看，做。
 // @author       techxuexi。
 // @icon         https://pc.xuexi.cn/favicon.ico
@@ -24,7 +24,7 @@ var study_css = ".egg_study_btn{outline:0;border:0;position:fixed;top:5px;left:5
 GM_addStyle(study_css);
 //https://www.xuexi.cn/lgdata/3uoe1tg20en0.json
 //查询今日完成情况
-const SearchSocreUrl = "https://pc-proxy-api.xuexi.cn/api/score/days/listScoreProgress?sence=score&deviceType=2";
+const SearchSocreUrl = "https://pc-proxy-api.xuexi.cn/delegate/score/days/listScoreProgress?sence=score&deviceType=2";
 //重要新闻列表（主）
 const NewsUrl1 = "https://www.xuexi.cn/lgdata/1jscb6pu1n2.json";
 //学习时评新闻列表
@@ -76,12 +76,12 @@ const ratelimitms = 3000;
 //默认情况下, chrome 只允许 window.close 关闭 window.open 打开的窗口,所以我们就要用window.open命令,在原地网页打开自身窗口再关上,就可以成功关闭了
 function closeWin() {
     try {
-         window.opener = window;
-         var win = window.open("","_self");
-         win.close();
-         top.close();
+        window.opener = window;
+        var win = window.open("","_self");
+        win.close();
+        top.close();
     } catch (e) {
-        }
+    }
 
 }
 
@@ -172,34 +172,34 @@ function getVideoTag() {
     let pauseButton = null;
     var u = navigator.userAgent;
     if(u.indexOf('Mac') > -1){//Mac
-    if (iframe.innerHTML) {
-        //如果有iframe,说明外面的video标签是假的
-        video = iframe.contentWindow.document.getElementsByTagName("video")[0];
-        pauseButton = iframe.contentWindow.document.getElementsByClassName("prism-play-btn")[0];
-    } else {
-        //否则这个video标签是真的
-        video = document.getElementsByTagName("video")[0];
-        pauseButton = document.getElementsByClassName("prism-play-btn")[0];
-    }
-    return {
-        "video": video,
-        "pauseButton": pauseButton
-    }
+        if (iframe.innerHTML) {
+            //如果有iframe,说明外面的video标签是假的
+            video = iframe.contentWindow.document.getElementsByTagName("video")[0];
+            pauseButton = iframe.contentWindow.document.getElementsByClassName("prism-play-btn")[0];
+        } else {
+            //否则这个video标签是真的
+            video = document.getElementsByTagName("video")[0];
+            pauseButton = document.getElementsByClassName("prism-play-btn")[0];
+        }
+        return {
+            "video": video,
+            "pauseButton": pauseButton
+        }
     }
     else{
-    if (iframe) {
-        //如果有iframe,说明外面的video标签是假的
-        video = iframe.contentWindow.document.getElementsByTagName("video")[0];
-        pauseButton = iframe.contentWindow.document.getElementsByClassName("prism-play-btn")[0];
-    } else {
-        //否则这个video标签是真的
-        video = document.getElementsByTagName("video")[0];
-        pauseButton = document.getElementsByClassName("prism-play-btn")[0];
-    }
-    return {
-        "video": video,
-        "pauseButton": pauseButton
-    }
+        if (iframe) {
+            //如果有iframe,说明外面的video标签是假的
+            video = iframe.contentWindow.document.getElementsByTagName("video")[0];
+            pauseButton = iframe.contentWindow.document.getElementsByClassName("prism-play-btn")[0];
+        } else {
+            //否则这个video标签是真的
+            video = document.getElementsByTagName("video")[0];
+            pauseButton = document.getElementsByClassName("prism-play-btn")[0];
+        }
+        return {
+            "video": video,
+            "pauseButton": pauseButton
+        }
     }
 }
 
@@ -841,11 +841,11 @@ async function doingExam() {
                     }
                     if (!hasButton) {
                         //没找到按钮，随便选一个
-                     try {
-                        allbuttons[0].click();
-                     } catch(e) {
-                        console.log(e);
-                     }
+                        try {
+                            allbuttons[0].click();
+                        } catch(e) {
+                            console.log(e);
+                        }
                     }
                 } else {
                     //没答案，随便选一个
@@ -1178,27 +1178,28 @@ async function start() {
  * @param clientY  相对窗口纵坐标
  * @param distance 滑动距离
  */
-function  dragandDrop(btn_hk, clientX, clientY, distance) {
+function dragandDrop(btn_hk, clientX, clientY, distance) {
     var elem = btn_hk,
         k = 0,
         interval;
-    iME(elem,"mousedown", clientX, clientY);
-    let waitTime = Math.floor(Math.random() * (0.005 * 1000 - 0.09 * 1000) + 0.09 * 1000);
+    iME(elem,"mousedown",0, 0, clientX, clientY);
+    //let waitTime = Math.floor(Math.random() * (0.005 * 1000 - 0.09 * 1000) + 0.09 * 1000)
+    let waitTime = Math.floor(Math.random() * (0.01 * 1000 - 0.02 * 1000) + 0.03 * 1000)
+    let MouseRandRangeY = Math.floor(Math.random() * (5))
     interval = setInterval(function() {
         k++;
-        iME(elem, "mousemove", clientX + k, clientY);
+        iter(k);
         if (k === distance) {
             clearInterval(interval);
-            iME(elem, "mouseup", clientX + k, clientY);
+            iME(elem, "mouseup", clientX + k, clientY, 220 + k, 400);
         }
     }, waitTime);
-    function iME(obj, event, clientXArg, clientYArg) {
-        var mouseEvent = new MouseEvent(event, {
-            bubbles: true,
-            cancelable: true,
-            clientX: clientXArg,
-            clientY: clientYArg
-        });
-        obj.dispatchEvent(mouseEvent);
+    function iter(y) {
+        iME(elem, "mousemove", clientX + y, clientY + MouseRandRangeY, clientX + y, clientY + MouseRandRangeY);
+    }
+    function iME(obj, event, screenXArg, screenYArg, clientXArg, clientYArg) {
+        var mousemove = document.createEvent("MouseEvent");
+        mousemove.initMouseEvent(event, true, true, unsafeWindow, 0, screenXArg, screenYArg, clientXArg, clientYArg, 0, 0, 0, 0, 0, null);
+        obj.dispatchEvent(mousemove);
     }
 }
