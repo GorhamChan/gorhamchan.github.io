@@ -12,8 +12,8 @@
 // @match        https://pc.xuexi.cn/points/exam-weekly-list.html
 // @match        https://pc.xuexi.cn/points/exam-paper-detail.html?id=*
 // @match        https://pc.xuexi.cn/points/exam-paper-list.html
-// @require      https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js
-// @require      https://cdn.jsdelivr.net/npm/blueimp-md5@2.9.0
+// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
+// @require      https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
