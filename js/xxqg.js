@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         学习助手
 // @namespace    http://tampermonkey.net/
-// @version      202303200
+// @version      202304200
 // @description  问题反馈位置： https://github.com/TechXueXi/techxuexi-js/issues 。读,看，做。
 // @author       techxuexi。
 // @icon         https://pc.xuexi.cn/favicon.ico
@@ -1038,6 +1038,7 @@ function createStartButton() {
     startButton.setAttribute("id", "startButton");
     startButton.innerText = "开始学习";
     startButton.className = "egg_study_btn egg_menu";
+    //alert("由于近期封号严重，已暂停该脚本");
     //添加事件监听
     try {// Chrome、FireFox、Opera、Safari、IE9.0及其以上版本
         startButton.addEventListener("click", start, false);
@@ -1071,6 +1072,8 @@ function showMenu(isShow = true) {
 }
 //开始
 async function start() {
+    alert("由于近期封号严重，已暂停该脚本");
+    return
     //保存配置
     console.log("初始化...")
     saveSetting();
@@ -1164,10 +1167,10 @@ async function start() {
         }
     } else {
         //提醒登录
-        // alert("请先登录");
+        alert("由于近期封号严重，已暂停该脚本");
         //修改为跳转到登陆页
-        let loggedButton = document.querySelectorAll("a[class='icon login-icon']")[0];
-        loggedButton.click()
+        //let loggedButton = document.querySelectorAll("a[class='icon login-icon']")[0];
+        //loggedButton.click()
     }
     return false;
 }
