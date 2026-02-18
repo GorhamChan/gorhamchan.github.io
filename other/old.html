@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<title>首页</title>
+	<!-- import CSS -->
+	<link rel="stylesheet" href="./elementui/index.css">
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+
+<style>
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+    background-color: #E4EFFF;
+    color: #333;
+    text-align: center;
+    
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+  }
+  
+  
+</style>
+
+<body>
+
+<div id="app">
+<el-container>
+<el-aside>
+    <el-menu
+      default-active="0"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      background-color="#E4EFFF"
+      text-color="#333333"
+	  active-text-color="#ffd04b"
+      >
+	  <el-menu-item index="0">
+		<template slot="title">
+			<i class="el-icon-s-home"></i>
+			<span>主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+		</template>
+      </el-menu-item>
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-share"></i>
+          <span>软件分享</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="1-1"><el-link href="#soft_win">Windows平台</el-link></el-menu-item>
+          <el-menu-item index="1-2"><el-link href="#soft_android">Android平台</el-link></el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+	  <el-menu-item index="2">
+        <template slot="title">
+          <i class="el-icon-connection"></i>
+		  <el-link href="#">博&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客</el-link>
+        </template>
+      </el-menu-item>
+      <el-menu-item index="3">
+		<template slot="title">
+			<i class="el-icon-user"></i>
+			<el-link href="#copyright">关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;于</el-link>
+		</template>
+      </el-menu-item>
+    </el-menu>
+</el-aside>
+
+  <el-container>
+	<el-header></el-header>
+    <el-main>
+		<div id="soft_win">
+				<h2>Windows平台</h2>
+				<h3>Notepad++--记事本、软件编码程序员必备工具</h3>
+				<a href="http://download.notepad-plus-plus.org/repository/7.x/7.8/npp.7.8.Installer.x64.exe" target="_blank">7.8版本下载</a>&nbsp;&nbsp;
+				<a href="https://notepad-plus-plus.org/downloads/" target="_blank">官网最新版本下载</a>
+				
+				<h3>Postman--模拟http请求软件测试工具</h3>
+				<a href="https://dl.pstmn.io/download/latest/win64" target="_blank">官网最新版本下载</a>
+				
+				<h3>Chrome--谷歌浏览器</h3>
+				<a href="https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BD6C6B672-992D-2A8A-B818-6F249BC2D95A%7D%26lang%3Dzh-CN%26browser%3D4%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Ddefaultbrowser/chrome/install/ChromeStandaloneSetup64.exe" target="_blank">官网最新版本下载</a>
+				
+				<h3>Firefox--火狐浏览器（国际版）</h3>
+				<a href="http://ftp.mozilla.org/pub/firefox/releases/70.0.1/win64/zh-CN/Firefox%20Setup%2070.0.1.exe" target="_blank">70.0.1版本下载</a>&nbsp;&nbsp;
+				<a href="http://ftp.mozilla.org/pub/firefox/releases/" target="_blank">官网所有版本</a>
+				
+				<h3>Potplayer--最强大的影音播放器（请使用迅雷下载）</h3>
+				<a href="https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe" target="_blank">官网最新版本下载</a>&nbsp;&nbsp;
+				<a href="https://daumpotplayer.com/wp-content/uploads/2019/06/OpenCodecSetup64.exe" target="_blank">配套解码器（可选）</a>&nbsp;&nbsp;
+				<a href="https://github.com/Nevcairiel/LAVFilters/releases/download/0.74.1/LAVFilters-0.74.1-Installer.exe" target="_blank">LAV解码器0.74.1版本（可选）</a>
+				
+				<h3>IDM--最高效强大的下载器</h3>
+				<a href="http://mirror2.internetdownloadmanager.com/idman635build7.exe?b=1&filename=idman635build7.exe" target="_blank">6.35.7版本下载</a>&nbsp;&nbsp;
+				<a href="http://www.internetdownloadmanager.com/download.html" target="_blank">官网最新版本下载</a>&nbsp;&nbsp;
+				<a href="https://www.lanzous.com/i6qsu2h" target="_blank">破解补丁</a>
+				
+				<h3>WPS专业版--国产最好用的文档处理器</h3>
+				<a href="http://wdl1.cache.wps.cn/wps/download/ep/WPS2019/WPSProPlus_11.8.2.8593.exe" target="_blank">官网11.8.2.8593版本下载</a>&nbsp;&nbsp;
+				<font color="red"><b>激活码：694BF-YUDBG-EAR69-BPRGB-ATQXH</b></font>
+				
+				<h3>金山PDF专业版--国产最好用的文档处理器</h3>
+				<a href="http://wdl1.cache.wps.cn/wps/download/ep/PDF/PDFPro_10.8.0.6834.exe" target="_blank">官网10.8.0.6834版本下载</a>&nbsp;&nbsp;
+				<font color="red"><b>激活码：QE2EV-2X2RH-9C2NW-UAGQN-HGD4C</b></font>
+				
+				<h3>福昕PDF编辑器专业版--国产最好用的PDF文档处理器</h3>
+				<a href="http://cdn09.foxitsoftware.com/product/phantomPDF/desktop/win/9.6/4C5D75D796F3313DF9B926A32AD311D0/FoxitPhantomPDF96_L10N_Setup_Website.exe" target="_blank">官网9.6.0版本下载</a>&nbsp;&nbsp;
+				<a href="http://cdn09.foxitsoftware.com/product/phantomPDF/desktop/win/9.7/10807F1F16330510944F2CD6546E5529/FoxitPhantomPDF97_L10N_Setup_Website.exe" target="_blank">官网9.7.0版本下载</a>&nbsp;&nbsp;
+				<a href="https://www.lanzous.com/i6qttaf" target="_blank">9.6.0版本破解补丁</a>
+				<a href="https://www.lanzous.com/i6umh0f" target="_blank">9.7.0版本破解补丁</a>
+				
+		</div>
+				
+		<div id="soft_android">
+				<h2>Android平台<font color="red">（非官方版本，请谨慎使用）</font></h2>
+				<h3>Mxplayer--安卓端强大的影音播放工具</h3>
+				<a href="https://www.lanzous.com/i6qtacd" target="_blank">修改版本下载</a>
+				
+				<h3>IDM+--安卓端一款下载工具</h3>
+				<a href="https://www.lanzous.com/i6qtkbc" target="_blank">修改版本下载</a>
+				
+				<h3>迅雷--安卓端一款下载工具</h3>
+				<a href="https://www.lanzous.com/i6qtk7i" target="_blank">修改版本下载</a>
+				
+				<h3>Chrome--谷歌浏览器安卓版</h3>
+				<a href="https://www.lanzous.com/i6qu8id" target="_blank">修改版本下载</a>
+				
+				<h3>Firefox--火狐浏览器安卓版（国际版）</h3>
+				<a href="https://www.lanzous.com/i6qtdla" target="_blank">修改版本下载</a>
+				
+				<h3>微博国际版--简洁高效社交工具</h3>
+				<a href="http://overseas.weico.cc/portal.php?ct=ad&a=download_app&source=weico_weibo" target="_blank">官网最新版本下载</a>
+				
+				<h3>RAR--安卓端强大的解压缩工具</h3>
+				<a href="https://www.lanzous.com/i6qtdpe" target="_blank">修改版本下载</a>
+				
+				<h3>扫描全能王--安卓端强大图片转文字（OCR）工具</h3>
+				<a href="https://www.lanzous.com/i6qtbxa" target="_blank">修改版本下载</a>
+				
+				<h3>91看电视--安卓端一款电视直播工具</h3>
+				<a href="https://www.lanzous.com/i6qtbeb" target="_blank">修改版本下载</a>
+				
+				<h3>WPS企业版--安卓端文档编辑工具</h3>
+				<a href="http://mo.wps.cn/pc-app/Android/moffice_11.4.1_default_ProCn00110_multidex_c88969cc5ef.apk" target="_blank">官网11.4.1版本下载</a>&nbsp;&nbsp;
+				<font color="red"><b>激活码：R7AKQ-KLBXV-RNX3F-BPACQ-NQDGE</b></font>
+				
+				<h3>微软office套装--安卓端文档编辑工具</h3>
+				<a href="https://www.lanzous.com/i755fif" target="_blank">16.0.12310.20272版本下载</a>
+		</div>
+	
+	</el-main>
+    <el-footer>
+      <div id="copyright">
+		<span>&copy;2019 GorhamChan &nbsp;如有侵权，请联系GorhamChan#163.com删除！</span>
+	  </div>
+	</el-footer>
+  </el-container>
+
+</el-container>
+</div>
+
+
+</body>
+
+<!-- import Vue before Element -->
+  <script src="./elementui/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="./elementui/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      methods: {
+      handleOpen(key, keyPath) {
+      
+      },
+      handleClose(key, keyPath) {
+        
+      }
+    }
+    })
+  </script>
+
+</html>

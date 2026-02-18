@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>小学教资课程&nbsp;手机版</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport">
+<link href="https://cdnocc.offcn.com/public/19ke/wap/css/index.css?v=105" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/newwap/js/jquery.min.js"></script>
+
+<link href="https://cdnocc.offcn.com/public/newwap/css/public.css" rel="stylesheet" type="text/css">
+<link href="https://cdnocc.offcn.com/public/newwap/css/kcjs.css?v=1.1.1" rel="stylesheet" type="text/css">
+<link href="https://cdnocc.offcn.com/public/newwap/css/color_19ke.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/newwap/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/newwap/js/public.js"></script>
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/newwap/js/wap_checklogin.js"></script>
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/newwap/js/TouchSlide.js"></script>
+
+<style type="text/css">
+			.selectedCss{
+				min-width: 2.15rem;font:0.32rem/0.98rem 'Microsoft YaHei'; color: #ff6600;
+			}
+			
+			.zg19m_zbjz1{
+				width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 3; background: url(https://cdnocc.offcn.com/public/19ke/wap/images/zg19m_jzb.jpg) no-repeat center; background-size: 100% 100%;
+			}
+			
+			.offcn_jdt1{ width: 50%; float: left; position: relative; margin-right: .1rem;}
+			
+			.zg_div1{right: 0.2rem;bottom:6px;z-index: 10;font-size: 0;}
+
+</style>
+
+<script type="text/javascript">
+function pgScale(){
+	var deviceWidth = document.documentElement.clientWidth;
+	if(deviceWidth > 720) deviceWidth = 720;
+	document.documentElement.style.fontSize = deviceWidth / 7.2 + 'px';
+}
+pgScale();
+window.onresize=pgScale;
+</script>
+
+	<script>
+		var data=[];
+		function getJsonObject(res) {
+			data=res;
+		}
+	</script>
+	<!--加载json-->
+	<script src="https://gorhamchan.gitee.io/json/zgjy_primary.js"></script>
+
+<script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/wap/js/index.js?v=107"></script>
+<script src="https://cdnocc.offcn.com/public/flowplayer/jquery.cookie.js"></script>
+<script type="text/javascript">
+	var id = GetQueryString("id");
+	var swit = '1';
+	var $data = {
+		0:'https://kejian3.offcn.com/',
+		1:'https://kejian5.offcn.com/',
+	};
+
+	var twach = '0';
+		twach = Math.floor(twach);
+	//课件3域名地址
+	var vldeo_url =  $data[swit];
+	//m3u8的地址连接
+	setUrl(data[id]);
+
+	var urls = "https://pptocc.offcn.com/";
+	function startcallback(){}
+
+	var newcmdurl1 = vldeo_url+cmdurl;
+	var newimdurl1= vldeo_url+imdurl;
+	var conf={
+		seek:twach,autoplay:true,hostname:"19.offcn.com",url:vldeo_url+m3u8url,
+		zgKeys: keys,phone: "",
+		proxy:"best",live:false,debug:false,splash:false,hlsQualities:true,initialVolume:1,swf_1:"",
+		newcmdurl:newcmdurl1,newimdurl:newimdurl1,cid:cid,startcallback:startcallback,selfo:"videooffcn"
+	};
+
+$(function() {    
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'jsonp',
+        url: 'https://verify.offcn.com/apikeys/write_verif/',
+        data: {
+            keys: '',
+        },
+        success: function (result) {
+            if (result.status == 1) {
+                initthis(conf);    
+                var odH =$('.offcn_lbvide').width()*9/16;
+                $('.offcn_lbvide').height(odH);
+                  $('.offcn_backlh').click(function(e) {
+                    e.stopPropagation();
+                    history.back();
+                })
+            } else {
+                loading.hide();
+                prompting.show('视频获取失败');
+            }
+        },
+        error: function () {
+            loading.hide();
+            prompting.show('视频获取失败');
+        }
+    });
+
+
+
+});
+
+        function setspeed(){
+            //myVid=document.getElementById("videooffcn");
+            setseep($("select[name='speedconf']").val());            
+     
+        }
+
+
+	$(function () {
+		var str='';
+		$.each(data,function (index, lesson) {
+
+			//设置选中样式
+			if(id==index){
+				str+='<li id="'+index+'">\n' +
+						'<a href="?id='+index+'" target="_top" class="zb_main_class" onclick="setUrl('+lesson+')">' +
+						'<span></span>' +
+						'<div><h4  class="selectedCss" ><em>'+(index+1)+'</em>'+lesson.lessonTitle+'</h4>' +
+						'<h5><p><strong>'+lesson.creatTime+'</strong></p><em class="zb_main_class_free">'+lesson.lengthTime+'</em></h5>' +
+						'</div>' +
+						'</a>' +
+						'</li>';
+			}else{
+				str+='<li id="'+index+'" class="" >\n' +
+						'<a href="?id='+index+'" target="_top" class="zb_main_class" onclick="setUrl('+lesson+')">' +
+						'<span></span>' +
+						'<div><h4 class="zb_main_class_h4 zb_main_class_h4_black"><em>'+(index+1)+'</em>'+lesson.lessonTitle+'</h4>' +
+						'<h5><p><strong>'+lesson.creatTime+'</strong></p><em class="zb_main_class_free">'+lesson.lengthTime+'</em></h5>' +
+						'</div>' +
+						'</a>' +
+						'</li>';
+			}
+
+		});
+		$("#lessonList").html(str);
+	})
+
+
+	function setUrl(lesson) {
+		m3u8url=lesson.m3u8Url;
+		cmdurl=lesson.cmdUrl;
+		imdurl=lesson.imdUrl;
+		var id = GetQueryString("id");
+		$("#offcn_backlh").html((id+1)+'-'+lesson.lessonTitle);
+		$("#offcn_bankbg").addClass("offcn_bankbg");
+		$("#offcn_backlh").addClass("offcn_backlh");
+		//loadfunc();
+		cid=lesson.mediaId;
+		keys=lesson.key;
+	}
+
+
+	//获取地址栏参数
+	function GetQueryString(name)
+	{
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null){
+			return  unescape(r[2]);
+		} else {
+			return '0';
+		}
+	}
+</script>
+<!--<script src="js/jquery-PlayBar.min.js"></script>-->
+<!--20180310 新增样式-->
+</head>
+<body>
+
+<div class="big" style="background:#fff;">
+	
+	<!--20180310 新增录播-->
+	<div class="offcn_lbvide" id="offcn_lbvide">
+            <div id="consolelog" style="display: none;position:absolute;width:100%;height:100px; overflow:auto; font-size: 12px; line-height: 14px; z-index: 1000; background-color: #fff"></div>
+	<div style="width:100%;height:100%; background:url('https://pptocc.offcn.com/content.png') no-repeat center;background-size: 60% auto" id="canboxid">                
+            </div>  
+		  
+				 <div id="offcn_bankbg" class="offcn_bankbg">
+                    <p id="offcn_backlh" class="offcn_backlh" onclick=""></p>
+                </div>
+				
+    		<div class="offcn_doplh" id="offcn_doplh">
+                        <div class="offcn_gdtl" id="offcn_gdtl">
+    			<p class="offcn_startlh  offcn_stoptlh" id="offcn_startlh"></p>
+    			<p class="offcn_starat offcn_jxsj" id="offcn_timestar">00:00:00</p>
+                        </div>
+                        <div class="offcn_jdt" id="offcn_jdt">
+                            <div class="offcn_procs" id="offcn_procs">					
+                                <div class="offcn_soptk" id="offcn_soptk"></div>
+                            </div>
+                            <div class="offcn_proscon" id="offcn_proscon"></div>
+                        </div>
+                        <p class="offcn_starat" id="offcn_timestop">00:00:00</p>
+	
+                        <!--<div class="offcn_xlqh">&nbsp;</div>-->
+    		</div>
+			
+            <div class="zg_div1">
+                <select class="offcn_bs" onchange="setspeed()" name='speedconf'>
+                    <option value="0.8">0.8X</option>
+                    <option value="1.0" selected="selected">1.0X</option>
+                     <option value="1.5">1.5X</option>
+                     <option value="2.0">2.0X</option>
+                </select>
+			</div>
+			
+			<!--
+			<div class="zg_div1">
+				<p class="offcn_fullscro" id="offcn_fullscro"></p>
+				
+				<script>
+					$('#offcn_fullscro').click(function(){
+						
+						/*
+						function horizontalScreen(className){
+							// transform 强制横屏
+							var conW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+							var conH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+							// transform: rotate(90deg); width: 667px; height: 375px;transform-origin:28% 50%;
+							//var iosTopHe = 0;//若有其他样式判断，写于此
+							
+							$(className).css({
+								"transform":"rotate(90deg) translate("+((conH-conW)/2)+"px,"+((conH-conW)/2)+"px)",
+								"width":conH+"px",
+								"height":conW+"px",
+								//"margin-top":iosTopHe+"px",
+								// "border-left":iosTopHe+"px solid #000",
+								"transform-origin":"center center",
+								"-webkit-transform-origin": "center center"
+							});
+						}
+						
+						horizontalScreen("#offcn_lbvide");
+						
+						tabbdH();
+						timetick();
+						initfplayer(confall);
+						loadfunc();
+						*/
+							if(!isFullscreen()){
+							
+								var docElm = document.getElementById("offcn_lbvide");
+								//W3C
+								if(docElm.requestFullscreen){
+								docElm.requestFullscreen();
+								}
+								//FireFox
+								else if (docElm.mozRequestFullScreen) {
+								docElm.mozRequestFullScreen();
+								}
+								//Chrome等
+								else if (docElm.webkitRequestFullScreen) {
+								docElm.webkitRequestFullScreen();
+								}
+								//IE11
+								else if (elem.msRequestFullscreen) {
+								elem.msRequestFullscreen();
+								}
+								//horizontalScreen("#offcn_lbvide");
+								//pgScale();
+								//tabbdH();
+								//timetick();
+								//initfplayer(confall);
+								//loadfunc();
+								//window.orientation = 0;
+								//$('#consolelog').addClass("testC");
+							}else{
+					
+								if (document.exitFullscreen) {
+								document.exitFullscreen();
+								}
+								else if (document.mozCancelFullScreen) {
+								document.mozCancelFullScreen();
+								}
+								else if (document.webkitCancelFullScreen) {
+								document.webkitCancelFullScreen();
+								}
+								else if (document.msExitFullscreen) {
+								document.msExitFullscreen();
+								}
+							};
+							
+						})
+						
+				</script>
+            </div>-->
+	
+            <div class="zg19m_zbjz" id="zg19m_zbjz1" style="display: none; ">               
+                <font>加载失败，请刷新重试</font>
+            </div>
+            <div class="zg19m_zbjz" id="zg19m_zbjz2" style="display: none;">
+                <span>加载中...</span>            
+            </div>
+	</div>
+	
+	<script>
+
+        $('.offcn_xlqh').click(function(e){
+//            $data[swit]
+            if(swit == '0'){
+                $(this).addClass('on');
+                swit = 1;
+            }else{
+                $(this).removeClass('on');
+                swit = 0;
+            }
+            
+            vldeo_url = $data[swit];
+            var newcmdurl1 = vldeo_url+cmdurl;
+            var newimdurl1= vldeo_url+imdurl;
+            var conf={
+				seek:twach,
+                autoplay:true,hostname:"19.offcn.com",
+                url:vldeo_url+m3u8url,
+                zgKeys: '',
+                phone: "",
+                proxy:"best",live:false,debug:false,splash:false,hlsQualities:true,initialVolume:1,swf_1:"",
+                newcmdurl:newcmdurl1,newimdurl:newimdurl1,cid:cid,startcallback:startcallback,selfo:"videooffcn"
+            };
+            ///
+             $.ajax({
+        type: 'POST',
+        dataType: 'jsonp',
+        url: 'https://verify.offcn.com/apikeys/write_verif/',
+        data: {
+            keys: '',
+        },
+        success: function (result) {
+            if (result.status == 1) {
+                initthis(conf);    
+                var odH =$('.offcn_lbvide').width()*9/16;
+                $('.offcn_lbvide').height(odH);
+                  $('.offcn_backlh').click(function(e) {
+                    e.stopPropagation();
+                    history.back();
+                })
+            } else {
+                loading.hide();
+                prompting.show('视频获取失败');
+            }
+        },
+        error: function () {
+            loading.hide();
+            prompting.show('视频获取失败');
+        }
+    });
+            ///
+            e.stopPropagation();
+//            $(this).toggleClass('on');
+        });
+	
+	</script>
+	
+        <div class="offcn_porl" id="offcn_porl" style="display: none;">
+		<div class="offcn_pptbjl fl">
+                    <video id="videooffcn"  x5-playsinline=""  playsinline=""  webkit-playsinline="true" preload="metadata"  ></video>
+                    <img src="https://cdnocc.offcn.com/public/19ke/wap/images/offcn_icno19lh.jpg"  width="100%" height="100%" id="picuser">
+		</div>
+		<div class="fl offcn_wordlh" id="offcn_wordlh">
+		     
+		</div>
+	</div>
+
+
+	
+	<!-- 介绍 聊天 -->
+	<div class="zb_jishao zb_video">
+		<ul class="zb_jishao_menus zb_jishao_ul">
+			<li><a href="javascript:" class="zb_jishao_ul_a skinblue_bor_bot skinblue_col">聊天</a></li>
+			<li><a href="javascript:" class="zb_jishao_ul_a">目录</a></li>
+		</ul>
+		<div class="tabbd">
+			<div class="tabc" id="zg19m_cgdt" style="display: block;">
+				<ul class="zb_video_ul" id="zb_video_ul">
+
+				</ul>
+				<!--<a href="javascript:void(0)" class="zb_vmore">有未读消息<i></i></a>-->
+			</div>
+			<!-- 目录 -->
+			<div class="tabc">
+				<div class="zg19m_smc">
+					<ul class="zb_list" id="lessonList">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+        <input type="hidden" id="course_id" value="">
+        <input type="hidden" id="exam_type" value="">        
+
+</div>
+<script src="https://cdnocc.offcn.com/public/newwap/js/jquery.mobile-1.4.5.js"></script>
+<script>
+        
+		$.mobile.autoInitializePage = false;
+
+		$(function(){
+			$(window).resize(function(){
+				tabbdH();
+			});
+			$(".zb_jishao_ul li").click(function(){
+				$(".zb_jishao_ul li a").removeClass("skinblue_bor_bot skinblue_col");
+				$(this).find("a").addClass("skinblue_bor_bot skinblue_col");
+				$(".tabc").hide();
+				$(".tabc").eq($(this).index()).show();
+			});
+
+		tabbdH();
+                
+
+        $('.zg19n_dkgg,.offcn_wordlh').click(function(){
+				$('.zg19m_ggtc').show();
+			});
+        $('.close_popup').click(function(){
+				$('.zg19m_ggtc').hide();
+			});
+        
+        $('.zg19n_nggb').on('click',function(){
+				$('.zg19m_nggw').hide();
+				tabbdH();
+			});
+		
+		})
+        
+        function tabbdH(){
+                var winH=$(window).height();
+                var lbvideH=$(".offcn_lbvide").outerHeight();
+                var porlH=$(".offcn_porl").outerHeight();
+                var zbH=$(".zb_jishao_ul").outerHeight();
+                var ggH=$('.zg19m_nggw').outerHeight();
+
+                if($(".offcn_porl").css("display") == 'none'){
+                    if($(".zg19m_nggw").css("display") == 'none'){
+                        $(".tabbd,.tabc").height(winH-lbvideH-zbH);
+
+                    }else{
+                        $(".tabbd,.tabc").height(winH-lbvideH-zbH-ggH);
+
+                    };      
+                }else{
+                        $(".tabbd,.tabc").height(winH-lbvideH-porlH-zbH);
+
+                };
+
+                $('.big').height(winH);
+
+        }
+</script>
+<div id="cli_dialog_div"></div>
+</body>
+</html>

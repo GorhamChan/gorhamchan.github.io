@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>小学教资课程&nbsp;电脑版</title>
+    <link href="https://cdnocc.offcn.com/public/19ke/v2/public/css/pub19.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/v2/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/v2/public/js/pub19.js?v=10"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/v2/public/js/jquery.SuperSlide.js"></script>
+    <link type="text/css" href="https://cdnocc.offcn.com/public/css/public.css" rel="stylesheet"  />
+    <link href="https://cdnocc.offcn.com/public/19ke/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnocc.offcn.com/public/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnocc.offcn.com/public/css/base.css?v=2.1.1" rel="stylesheet" type="text/css" />
+    <link href="https://cdnocc.offcn.com/public/css/offcn_style1200.css?v=1.1.1" rel="stylesheet" type="text/css" id="skin" />
+
+    <link href="https://cdnocc.offcn.com/public/19ke/css/skin_19ke.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/js/outlogin.js"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/js/base.js"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/java.js"></script>
+    <script src="https://cdnocc.offcn.com/public/19ke/js/jingpin.js"></script>
+
+    <link href="https://cdnocc.offcn.com/public/video/css/global.css?v=1.0" rel="stylesheet" type="text/css" />
+    <link href="https://cdnocc.offcn.com/public/video/css/style.css?v=1.1.4" rel="stylesheet" type="text/css" />
+    <link id="wids"  href="https://cdnocc.offcn.com/public/video/css/style1200.css?v=1.0" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnocc.offcn.com/public/video/jquery.mCustomScrollbar.css">
+
+    <script src="https://cdnocc.offcn.com/public/video/jquery-ui.min.js"></script>
+    <script src="https://cdnocc.offcn.com/public/video/jquery.mousewheel.min.js"></script>
+    <script src="https://cdnocc.offcn.com/public/video/jquery.mCustomScrollbar.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/video/js/java.js?v=1"></script>
+    <!--<script type="text/javascript" src="https://cdnocc.offcn.com/public/video/js/video.js"></script>-->
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/video/js/lrtk.js"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/js/outlogin.js"></script>
+
+    <script type="text/javascript" src="https://cdnlive.offcn.com/public/js/swfobject.js?v=2"></script>
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/hls.js?v=103"></script>
+    <!--20180310新增样式-->
+
+    <link href="https://cdnocc.offcn.com/public/19ke/css/index.css?v=100" type="text/css" rel="stylesheet" />
+	<!--控制播放器-->
+	<!--<script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/index_h5.js?v=102"></script>-->
+	<script type="text/javascript" src="https://cdnocc.offcn.com/public/19ke/js/index_h5.js?v=102"></script>
+	
+    <script type="text/javascript" src="https://cdnocc.offcn.com/public/js/jQuery-shoppingnew.js?v=1.1.5"></script>
+    <!--前台全局js-->
+    <script language="javascript" src="https://cdnocc.offcn.com/public/js/qglobal.js"></script>
+    <script language="javascript" src="https://cdnocc.offcn.com/public/js/front.js"></script>
+    <script language="javascript" src="https://cdnocc.offcn.com/public/19ke/js/zb.js"></script>
+
+	
+    <script>
+        var data=[];
+        function getJsonObject(res) {
+            data=res;
+        }
+    </script>
+    
+    <script src="https://gorhamchan.gitee.io/json/zgjy_primary.js"></script>
+    
+    <script>
+        function onchangespeed(v){
+            setseep(v);
+            $("#vspeed").html('<em class="ioc02">&nbsp;</em>'+v);
+        }
+		
+		var livedata = {
+					poll: "",
+					bgpic: "https://pptocc.offcn.com/content.png"
+				};
+			
+		function getliveconfig() {
+			return livedata;
+		}
+		
+        $(function () {
+
+                var id = GetQueryString("id");
+                //初始化播放器
+				
+                var twach = '0';
+                twach = Math.floor(twach);
+                var sdebugger=false;
+                var vldeo_url = 'https://kejian3.offcn.com/';
+
+                setUrl(data[id]);
+				
+				(function($){
+					$(document).ready(function(){
+						$("#pane1").mCustomScrollbar();
+						$("#pane1").mCustomScrollbar("scrollTo","#pane1 .on");
+					});
+				})(jQuery);
+
+                function startcallback(){}
+                var newcmdurl1= vldeo_url+cmdurl;
+                var newimdurl1= vldeo_url+imdurl;
+
+                var conf={seek:twach,autoplay:true,hostname:"19.offcn.com",url:vldeo_url+m3u8url,zgKeys: zgKeys,
+                    phone: "",proxy:"best",live:false,debug:sdebugger,splash:false,hlsQualities:true,initialVolume:1,
+                    swf_1:"https://19.offcn.com/public/19ke/swf/offcnplayer2.swf",
+                    swf_2:"https://19.offcn.com/public/19ke/swf/record5.swf?v=12",newcmdurl:newcmdurl1,newimdurl:newimdurl1,cid:cid,wmode:"opaque",startcallback:startcallback
+                };
+                $(function() {
+                    initthis(conf);
+
+                });
+
+
+                var str='';
+                $.each(data,function (index, lesson) {
+                    //设置选中样式
+                    if(id==index){
+                        str+='<li id="'+index+'" class="on" ><em>'+(index+1)+'</em>\n' +
+                            '     <span data-flag="" class="ioc010">\n' +
+                            '     <a href="?id='+index+'" target="_top" onclick="setUrl('+lesson+')">'+lesson.lessonTitle+'</a> '+lesson.creatTime+' &nbsp '+lesson.lengthTime+'\n' +
+                            '     </span>\n' +
+                            ' </li>';
+                    }else{
+                        str+='<li id="'+index+'" class="" ><em>'+(index+1)+'</em>\n' +
+                            '     <span data-flag="" class="ioc010">\n' +
+                            '     <a href="?id='+index+'" target="_top" onclick="setUrl('+lesson+')">'+lesson.lessonTitle+'</a> '+lesson.creatTime+' &nbsp '+lesson.lengthTime+'\n' +
+                            '     </span>\n' +
+                            ' </li>';
+                    }
+
+                });
+                $("#lessonList").html(str);
+
+            function setUrl(lesson) {
+                m3u8url=lesson.m3u8Url;
+                cmdurl=lesson.cmdUrl;
+                imdurl=lesson.imdUrl;
+                $("#lesson_title").html("<div>"+lesson.courseTitle+">>>"+lesson.lessonTitle+"</div>");
+                cid=lesson.mediaId;
+                zgKeys=lesson.key;
+            }
+
+            //获取地址栏参数
+            function GetQueryString(name)
+            {
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if(r!=null){
+                    return  unescape(r[2]);
+                } else {
+                    return '0';
+                }
+            }
+        })
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+<input name="video_id" type="hidden" value="261422" />
+<div class="zg_videobox">
+    <div class="zg_video">
+        <div class="zg_video_bt">
+
+            <div id="lesson_title"></div>
+            <style>
+                .offcn_newbtn{ display:inline-block; *display:inline; zoom:1; width:86px; height: 24px;border:1px solid #FF740F; margin-right:10px;font-size: 12px; line-height: 24px; color:#ff740f; border-radius: 3px;      text-align: center; margin-top: 12px;}
+                .offcn_newbtn:hover{ background: #ff740f; color:#fff;text-decoration:none;   }
+            </style>
+            <script>
+                $(function() {
+//                $.qglobal.ui.getAppraisalForCourse();
+                    $('.Q-buy-btn').shoping(); //调用shoping函数
+                    $('.Q-directbuy-btn').directshoping(); //调用directshoping函数
+                    $('#J_confirm_userinfo').checkoutoperate();
+
+                })
+            </script>
+
+        </div>
+        <div class="zg_video_cont offcn_size">
+            <div class="zg_shipin">
+                <div class="zg_shipin_cont" id="KeFuDiv"  >
+                    <!--<div class="zg19_lb_jzjx" style="display:none"><span>加载中</span></div>-->
+                    <div class="zg19_lb_jzts"  style="display:none">加载失败，请刷新重试</div>
+                    <p class="xlzh" style="display:none;">线路切换中...</p>
+                    <div style="width: 100%; height: 100%; " id="KeFuDivcontent">
+                        <script type="text/javascript" src="https://cdnocc.offcn.com/public/js/pushstream.js"></script>
+                        	
+                        
+						<div  id="white" style="width: 100%; height: 100%; " ></div>
+						
+												
+                        <a href="javascript:void(0);" class="offcn_startlh" id="offcn_startlh" style="display:none"></a>
+                        <div class="offcn_shaolr" id="offcn_shaolr" style="display: none">
+                            <p class="offcn_shadowlh" id="offcn_shadowlh"></p>
+                            <div class="zg19_lbjdl">
+                                <a href="javascript:void(0);" class="offcn_playlh offcn_stoplhdk" id="offcn_playlh"></a>
+                                <p class="offcn_timestar" id="offcn_timestar">00:00:00</p>
+                            </div>
+                            <div class="zg19_lbjdc" id="zg19_lbjdc">
+                                <p class="offcn_pross" id="offcn_pross"></p>
+                                <p class="offcn_prossOn" id="offcn_prossOn"></p>
+                                <a href="javascript:void(0);" class="offcn_cursolh" id="offcn_cursolh"></a>
+                                <!--               			<a href="javascript:void(0);" class="offcn_cursolh1"></a>-->
+                            </div>
+                            <div class="zg19_lbjdr">
+                                <p class="offcn_timestop" id="offcn_timestop">00:00:00</p>
+                                <a href="javascript:void(0);" class="offcn_afullscr" id="offcn_afullscr"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--<div class="vidmail"><p>&nbsp;</p><span>按住视频可进行拖动</span><em>×</em></div>-->
+                </div>
+            </div>
+
+
+            <div class="right">
+                <div class="zg_mulu">
+                    <!--此处里面放置视频或者老师图像-->
+                    <div class="offcn_shipinlh offcn_heilh01" id="videooffcn"  style="z-index:0;">
+
+                    </div>
+
+                    <!--此处放置视频或者老师图像-->
+                    <div id="offcn_newaddsle" >
+                        <ul class="offcn_tablh">
+                            <li class="on" id="chat"><span>聊天</span></li>
+                            <li><span>目录</span></li>
+                        </ul>
+
+                        <div class="offcn_autoHeilh">
+                            <div class="offcn_tabcontlh" id="autoHei">
+                                <ul class="offcn_newulh" id="offcn_newulh">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="offcn_autoHeilh">
+                            <div class="offcn_tabcontlh" id="autoHei0" >
+                                <ul class="mulunr offcn_sption " style="position:relative;" id="lessonList">
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="zg_video_bot">
+            <div class="zg_video_msqh on" onClick="daymsqh(this);">白天模式</div>
+            <div class="xlzz xlzz_new">
+                <a class="da" id="vspeed" href="javascript:void(0)"><em class="ioc02">&nbsp;</em>倍速</a>
+                <p class="xlz">
+                    <a href="javascript:void(0);" class="hover" class="on" onclick="onchangespeed(1);"><em>√</em>×1倍</a>
+                    <a href="javascript:void(0);" onclick="onchangespeed(1.2);"><em>√</em>×1.2倍</a>
+                    <a href="javascript:void(0);" onclick="onchangespeed(1.35);"><em>√</em>×1.35倍</a>
+                    <a href="javascript:void(0);"  onclick="onchangespeed(1.5);"><em>√</em>×1.5倍</a>
+                    <a href="javascript:void(0);"  onclick="onchangespeed(1.6);"><em>√</em>×1.6倍</a>
+                    <a href="javascript:void(0);" onclick="onchangespeed(1.8);"><em>√</em>×1.8倍</a>
+                    <a href="javascript:void(0);" onclick="onchangespeed(2.0);"><em>√</em>×2.0倍</a>
+                </p>
+            </div>
+            <script>
+                function daymsqh(obj){
+
+                    var tmp = obj;
+                    if($(tmp).hasClass('on')){
+                        $(tmp).removeClass('on').html('夜间模式');
+                        $('.zg_videobox').addClass('zg_videoday');
+                    }else{
+                        $(tmp).addClass('on').html('白天模式');
+                        $('.zg_videobox').removeClass('zg_videoday');
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+<div class="zg_jieshaobox clearfix">
+    <div class="offcn_size">
+        <div class="zg_jieshao fl">
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    $(".zg17_fu li.bk02").hover(function () {
+        $(this).find(".erweima").show();
+        $(this).addClass("on");
+    }, function () {
+        $(this).find(".erweima").hide();
+        $(this).removeClass("on");
+    })
+    //返回顶部
+    $(window).scroll(function () {
+        var sc = $(window).scrollTop();
+        var rwidth = $(window).width();
+        if (sc > 500) {
+            $(".zg17_fu").css("display", "block");
+        } else {
+            $(".zg17_fu").css("display", "none");
+        }
+    })
+    $(".go_top").click(function () {
+        $("html,body").animate({scrollTop: "0px"}, 800);})
+</script>
+<!-- end 工具栏 -->
+<script>
+    var SLPGER = {
+        root: "//19.offcn.com/",
+        uid: ""
+    };
+</script>
+<script type="text/javascript">
+    //初始化弹窗
+    (function (d) {
+        d['okValue'] = '确定';
+        d['cancelValue'] = '取消';
+        d['title'] = '消息';
+    })($.dialog.defaults);
+</script>
+
+
+</body>
+
+<script>
+    var $players;
+    var changeLineFlag = false;
+    $(function(){
+        //line style change ing...
+        $('.xlzz').hover(function(){
+            $(this).children('p').show();
+        },function(){
+            $(this).children('p').hide();
+        });
+        $('.xlz a').click(function(){
+            $(".xlz a").removeClass("on");
+            $(this).addClass("on");
+        });
+    });
+    var open_status = true;//是否能播放
+    $(function(){
+        $.qglobal.ui.getMaterialsForBo(); //播放页资料下载
+        var login_flag = 0;            //收藏
+        //已学完
+        var $daid;
+        $("#finished").click(function(){
+            // $(this).addClass("wan")
+            $daid = $(this).attr('daid');
+            $cid = $(this).attr('cid');
+            $datype = $(this).attr('datype');
+        });
+    });
+    // 这个初始化页面上的演示scollpanes.
+</script>
+
+<!-- function -->
+<script>
+    function nofind(){
+        var img=event.srcElement;
+        img.src="https://cdnocc.offcn.com/public/images/zg_tx08.jpg";
+        img.onerror=null; //控制不要一直跳动
+    }
+</script>
+
+</html>
